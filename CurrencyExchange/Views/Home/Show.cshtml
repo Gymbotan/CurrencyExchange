@@ -1,0 +1,25 @@
+﻿@model List<Record>
+
+<form asp-controller="Home" asp-action="Remove">
+    <table id="listtable">
+        <tr>
+            <td>ID валюты</td>
+            <td>Название валюты</td>
+            <td>Дата</td>
+            <td>Курс к BYN</td>
+            <td>Удалить строку</td>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].Cur_ID</td>
+                <td>@Model[i].Cur_Name</td>
+                <td>@Model[i].Date.ToShortDateString()</td>
+                <td>@Model[i].Cur_OfficialRate</td>
+                <td>
+                    <input type="submit" name="guid" value="@Model[i].Guid"/>
+                </td>
+            </tr>
+        }
+    </table>
+</form>

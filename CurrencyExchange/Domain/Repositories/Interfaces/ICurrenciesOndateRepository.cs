@@ -12,7 +12,7 @@ namespace CurrencyExchange.Domain.Repositories.Interfaces
         /// Get all the records.
         /// </summary>
         /// <returns>All the records.</returns>
-        public IQueryable<Record> GetRecords();
+        public List<Record> GetRecords();
 
         /// <summary>
         /// Get all the currencies.
@@ -38,9 +38,11 @@ namespace CurrencyExchange.Domain.Repositories.Interfaces
         public void SaveRecord(Record entity);
 
         /// <summary>
-        /// Delete record with choosen id.
+        /// Delete record with choosen row.
         /// </summary>
-        /// <param name="id">Id of the record.</param>
+        /// <param name="row">Row of the record.</param>
+        void DeleteRecord(int row);
+
         void DeleteRecord(Guid id);
     }
 }

@@ -36,9 +36,9 @@ namespace CurrencyExchange
                 // ׁמגלוסעטלמסעü ג Asp.Net Core 3.0
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
-            services.AddTransient<ICurrenciesOndateRepository, EFCurrenciesOndateRepository>();
-            services.AddTransient<ICurrenciesRepository, EFCurrenciesRepository>();
-            services.AddTransient<Storage>();
+            services.AddScoped<ICurrenciesOndateRepository, EFCurrenciesOndateRepository>();
+            services.AddScoped<ICurrenciesRepository, EFCurrenciesRepository>();
+            services.AddScoped<Storage>();
             //services.AddSingleton<AppDbContext>();
 
             // Connect to DataBase

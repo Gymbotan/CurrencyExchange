@@ -10,8 +10,10 @@ namespace CurrencyExchange.Models
     {
         [Key]
         public Guid Guid { get; set; }
-        public string Code { get; set; }
-        public DateTime CurDate { get; set; }
-        public decimal Cur_Val { get; set; }
+        public int Cur_ID { get; set; }
+        public string Cur_Name { get; set; }
+        //public string Code { get; set; }
+        public DateTime Date { get; set; }
+        public double Cur_OfficialRate { get; set; }
     }
 }

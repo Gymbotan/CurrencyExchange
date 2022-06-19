@@ -14,5 +14,10 @@ namespace CurrencyExchange.Models
         public string Cur_Abbreviation { get; set; }
         public string Cur_Name { get; set; }
         public string Cur_QuotName { get; set; }
+
+        public override string ToString()
+        {
+            return Cur_Name;
+        }
     }
 }

@@ -1,1 +1,36 @@
-﻿
+﻿@model IQueryable<Currency>
+<body>
+    <form asp-controller="Home" asp-action="Show">
+        <label for="start">Start date:</label>
+
+        <input type="date" id="start" name="dateStart"
+               value="@ViewBag.today"
+               min="2016-01-01" max="2022-12-31">
+
+        <label for="start">End date:</label>
+
+        <input type="date" id="end" name="dateEnd"
+               value="@ViewBag.today"
+               min="2016-01-01" max="2022-12-31">
+
+        @*<select name="currencies" required="required">
+            <option value="">Выберите интересующую валюту</option>
+            @foreach (var currency in Model)
+            {
+                <option value="@currency.Cur_ID">@currency.Cur_Name</option>
+            }
+        </select>*@
+
+        @*<script>
+   function agreeForm(f) {
+    // Если поставлен флажок, снимаем блокирование кнопки
+    if (f.agree.checked) f.submit.disabled = 0
+    // В противном случае вновь блокируем кнопку
+    else f.submit.disabled = 1
+   }
+        </script>*@
+
+        <select name="selectedCur" asp-items="ViewBag.SelectItems"></select>
+        <input type="submit" />
+    </form>
+</body>

@@ -9,9 +9,22 @@ namespace CurrencyExchange.Domain.Repositories.EntityFramework
 {
     public class EFCurrenciesOndateRepository : ICurrenciesOndateRepository
     {
-        public void DeleteRecord(Guid id)
+        private readonly AppDbContext context;
+
+        public EFCurrenciesOndateRepository(AppDbContext context)
+        {
+            this.context = context;
+        }
+
+        public void DeleteRecord(int row)
         {
             throw new NotImplementedException();
+        }
+
+        public void DeleteRecord(Guid id)
+        {
+            context.Currencies_Ondate.Remove(new Record { Guid = id });
+            context.SaveChanges();
         }
 
         public Record GetRecordByCode(string code)
@@ -29,14 +42,20 @@ namespace CurrencyExchange.Domain.Repositories.EntityFramework
             throw new NotImplementedException();
         }
 
-        public IQueryable<Record> GetRecords()
+        public List<Record> GetRecords()
         {
-            throw new NotImplementedException();
+            return context.Currencies_Ondate.ToList();
         }
 
         public void SaveRecord(Record entity)
         {
-            throw new NotImplementedException();
+            if (context.Currencies_Ondate.FirstOrDefault(x => x.Cur_ID == entity.Cur_ID && x.Date == entity.Date) == null)
+            {
+                context.Currencies_Ondate.Add(entity);
+                //context.Entry(entity).State = EntityState.Added;
+            }
+
+            context.SaveChanges();
         }
     }
 }
