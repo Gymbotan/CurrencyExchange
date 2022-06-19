@@ -1,36 +1,22 @@
 ﻿@model IQueryable<Currency>
 <body>
     <form asp-controller="Home" asp-action="Show">
-        <label for="start">Start date:</label>
+        <h2>Выберите начальную и конечную даты нужного диапазона</h2>
+        <label for="start">Начальная дата:</label>
 
         <input type="date" id="start" name="dateStart"
                value="@ViewBag.today"
-               min="2016-01-01" max="2022-12-31">
+               min="2016-01-01" max="@ViewBag.today">
 
-        <label for="start">End date:</label>
+        <label for="end">Конечная дата:</label>
 
         <input type="date" id="end" name="dateEnd"
                value="@ViewBag.today"
-               min="2016-01-01" max="2022-12-31">
-
-        @*<select name="currencies" required="required">
-            <option value="">Выберите интересующую валюту</option>
-            @foreach (var currency in Model)
-            {
-                <option value="@currency.Cur_ID">@currency.Cur_Name</option>
-            }
-        </select>*@
-
-        @*<script>
-   function agreeForm(f) {
-    // Если поставлен флажок, снимаем блокирование кнопки
-    if (f.agree.checked) f.submit.disabled = 0
-    // В противном случае вновь блокируем кнопку
-    else f.submit.disabled = 1
-   }
-        </script>*@
-
-        <select name="selectedCur" asp-items="ViewBag.SelectItems"></select>
-        <input type="submit" />
+               min="2016-01-01" max="@ViewBag.today">
+        <label>*Примечание: максимальный диапазон - один год. 
+            <p>При задании большего диапазона будут получены данные за последный год перед конечной датой</p></label>
+        <label style="margin-top:30pt">Выберите интересующую валюту:</label>
+        <select style="margin-top:10pt" name="selectedCur" asp-items="ViewBag.SelectItems"></select>
+        <input style="margin-top:10pt" type="submit" />
     </form>
 </body>

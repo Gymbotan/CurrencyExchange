@@ -15,6 +15,7 @@ using System.IO;
 using CurrencyExchange.Domain.Repositories.Interfaces;
 using CurrencyExchange.Domain.Repositories.EntityFramework;
 using CurrencyExchange.Domain;
+using Microsoft.Extensions.Logging;
 
 namespace CurrencyExchange
 {
@@ -36,10 +37,20 @@ namespace CurrencyExchange
                 // Совместимость в Asp.Net Core 3.0
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
+            services.AddLogging(loggingBuilder =>
+            {
+                //Вывод в консоль
+                loggingBuilder.AddConsole()
+                //Вывод команд SQL
+                .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information);
+
+                //Вывод в окно отладки
+                loggingBuilder.AddDebug();
+            });
+
             services.AddScoped<ICurrenciesOndateRepository, EFCurrenciesOndateRepository>();
             services.AddScoped<ICurrenciesRepository, EFCurrenciesRepository>();
             services.AddScoped<Storage>();
-            //services.AddSingleton<AppDbContext>();
 
             // Connect to DataBase
             services.AddDbContext<AppDbContext>(x => x.UseSqlite(Configuration["ConnectionString"]));

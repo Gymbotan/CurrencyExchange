@@ -37,7 +37,6 @@ namespace CurrencyExchange.Domain.Repositories.EntityFramework
             if (context.Currencies.FirstOrDefault(x => x.Cur_ID == entity.Cur_ID) == null)
             {
                 context.Currencies.Add(entity);
-                //context.Entry(entity).State = EntityState.Added;
             }
             
             context.SaveChanges();

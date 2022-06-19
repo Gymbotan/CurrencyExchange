@@ -13,36 +13,17 @@ namespace CurrencyExchange.Domain.Repositories.Interfaces
         /// </summary>
         /// <returns>All the records.</returns>
         public List<Record> GetRecords();
-
-        /// <summary>
-        /// Get all the currencies.
-        /// </summary>
-        /// <returns>All the record.</returns>
-        //public IQueryable<Article> GetArticlesByTemplate(string template);
-
-        /// <summary>
-        /// Get specific record with choosen id.
-        /// </summary>
-        /// <param name="id">Id of the record.</param>
-        /// <returns>record with choosen id.</returns>
-        public Record GetRecordByCode(string code);
-
-        public Record GetRecordByDate(DateTime date);
-
-        public Record GetRecordByCodeAndDate(string code, DateTime date);
-
+    
         /// <summary>
         /// Save record.
         /// </summary>
-        /// <param name="entity">record that should be saved.</param>
+        /// <param name="entity">Record that should be saved.</param>
         public void SaveRecord(Record entity);
 
         /// <summary>
-        /// Delete record with choosen row.
+        /// Delete record with choosen id.
         /// </summary>
-        /// <param name="row">Row of the record.</param>
-        void DeleteRecord(int row);
-
+        /// <param name="id">Id of the record.</param>        
         void DeleteRecord(Guid id);
     }
 }
